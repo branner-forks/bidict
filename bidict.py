@@ -50,9 +50,9 @@ More Examples
 Expanding on the previous example, anywhere the ``__getitem__`` syntax can be
 used to reference a forward mapping, slice syntax can be used too::
 
-    >>> element_by_symbol['H'] = 'Hydrogen'
+    >>> element_by_symbol['H'] = 'hydrogen'
     >>> element_by_symbol['H':]
-    'Hydrogen'
+    'hydrogen'
 
 Including setting and deleting items in either direction::
 
