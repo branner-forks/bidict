@@ -1,7 +1,7 @@
 #! /usr/bin/env python
 # time_manual_reverse_dict.py
 # David Prager Branner
-# 20140925
+# 20140927
 
 import bidict as B
 import time
@@ -14,8 +14,8 @@ def main(trials=10, card=100000, hi_lo = 10000000):
     total_time_bidict = 0
     total_time_revdict = 0
     for i in range(trials):
-        start_time = time.time()
         ints_to_strs = construct_ints_to_strs(card, hi_lo)
+        start_time = time.time()
         b = B.bidict(ints_to_strs)
         total_time_bidict += time.time() - start_time
         start_time = time.time()
@@ -31,8 +31,8 @@ def main(trials=10, card=100000, hi_lo = 10000000):
     total_time_bidict = 0
     total_time_revdict = 0
     for i in range(trials):
-        start_time = time.time()
         strs_to_ints = construct_strs_to_ints(card, hi_lo)
+        start_time = time.time()
         b = B.bidict(strs_to_ints)
         total_time_bidict += time.time() - start_time
         start_time = time.time()
