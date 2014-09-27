@@ -47,16 +47,16 @@ def main(trials=10, card=100000, hi_lo = 10000000):
 
 def construct_ints_to_strs(card, hi_lo):
     return [(i) for i in zip(
-            random_ints(card, hi_lo, -hi_lo),
+            random_ints(card, -hi_lo, hi_lo),
                 random_strings(10, card))]
 
 def construct_strs_to_ints(card, hi_lo):
     return [(i) for i in zip(
             random_strings(10, card),
-                random_ints(card, hi_lo, -hi_lo))]
+                random_ints(card, -hi_lo, hi_lo))]
 
-def random_ints(cardinality=10, hi=10, lo=-10):
-    """return list of `cardinality` ints, each in range (lo, hi)."""
+def random_ints(cardinality=10, lo=-10, hi=10):
+    """Return list of `cardinality` ints, each in the range [lo, hi]."""
     if cardinality > hi - lo:
         raise Exception(
                 'cardinality ({}) > hi - lo ({}); impossible condition'.
