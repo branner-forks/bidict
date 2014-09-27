@@ -1,16 +1,16 @@
 # test_large_lists.py
 # David Prager Branner
-# 20140925
+# 20140927
 
-"""Supply tests with large lists of randomly constructed items."""
+"""Supply tests with large lists of unique and randomly constructed items."""
 
 import bidict as B
 import pytest
 import random
 import string
 
-def random_ints(cardinality=10, hi=10, lo=-10):
-    """return list of `cardinality` ints, each in range (lo, hi)."""
+def random_ints(cardinality=10, lo=-10, hi=10):
+    """return list of `cardinality` ints, each in the range [lo, hi]."""
     if cardinality > hi - lo:
         raise Exception(
                 'cardinality ({}) > hi - lo ({}); impossible condition'.
@@ -31,12 +31,12 @@ def random_strings(length=10, cardinality=10):
 
 hi_lo = 10000000
 card = 100000
-ints_to_strs = [(i) for i in zip(
-    random_ints(card, hi_lo, -hi_lo),
+ints_to_strs = [i for i in zip(
+    random_ints(card, -hi_lo, hi_lo),
     random_strings(10, card))]
-strs_to_ints = [(i) for i in zip(
+strs_to_ints = [i for i in zip(
     random_strings(10, card),
-    random_ints(card, hi_lo, -hi_lo))]
+    random_ints(card, -hi_lo, hi_lo))]
 
 def test_inverse_01(lst=ints_to_strs):
     assert lst == list(B.inverted(B.inverted(lst)))
